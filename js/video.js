@@ -41,11 +41,14 @@ const displayVideos = (videoData) => {
     const cardVideo = document.createElement("div")
     cardVideo.classList = 'card bg-base-100 w-96 shadow-sm'
     cardVideo.innerHTML = `
-             <figure class="px-10 pt-10 h-[200px]">
- <img
+ <figure class="px-10 pt-10 h-[200px] relative">
+    <img
       src=${data.thumbnail}
       alt="Shoes"
       class="rounded-xl h-full w-full object-cover" />
+      
+      ${data.others.posted_date?.length == "" ? "" : `<span class="absolute right-12 bottom-2 bg-black p-1 rounded-lg text-white font-semibold">${data.others.posted_date}</span>`}
+
   </figure>
   <div class="w-96  flex gap-3 justify-start  my-3">
     
@@ -58,7 +61,9 @@ const displayVideos = (videoData) => {
 
          <div class="flex gap-2 items-center">
             <p class="text-gray-400">${data.authors[0].profile_name}</p>
-            <img class="w-5 h-5" src="https://img.icons8.com/?size=100&id=D9RtvkuOe31p&format=png&color=000000"/>
+            ${data.authors[0].verified == true ?
+                `<img class="w-5 h-5" src="https://img.icons8.com/?size=100&id=D9RtvkuOe31p&format=png&color=000000"/>` : ''
+            }
          </div>
          
          
