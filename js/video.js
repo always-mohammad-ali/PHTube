@@ -12,13 +12,24 @@ const display = (data) => {
   const catagoriesContainer = document.getElementById("catagories-container");
   data.forEach((element) => {
     console.log(element);
-    const btn = document.createElement("button");
-    btn.classList = "btn";
+    const btnContainer = document.createElement("div")
+    btnContainer.innerHTML = `
+        <button onclick = "categoryVideoLoad(${element.category_id})" class="btn">${element.category}</button>
+    `
 
-    btn.innerText = element.category;
-    catagoriesContainer.append(btn);
+    
+    catagoriesContainer.append(btnContainer);
   });
 };
+
+const categoryVideoLoad = (id) =>{
+    // alert(id)
+
+    fetch(`https://openapi.programming-hero.com/api/phero-tube/category/${id}`)
+    .then((res) => res.json())
+    .then((data) => displayVideos(data.category))
+    .catch((err) => console.error(err));
+}
 
 const loadVideos = () => {
   fetch("https://openapi.programming-hero.com/api/phero-tube/videos")
@@ -31,6 +42,7 @@ loadVideos();
 
 const displayVideos = (videoData) => {
   const videoContainer = document.getElementById("videos");
+  videoContainer.innerHTML = "";
   console.log(videoData);
 
   videoData.forEach((data) => {
