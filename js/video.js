@@ -9,5 +9,14 @@ const load = () =>{
 load();
 // create display
 const display = (data) =>{
-    console.log(data)
+    const catagoriesContainer = document.getElementById('catagories-container')
+    data.forEach(element => {
+
+        console.log(element)
+        const btn = document.createElement('button')
+        btn.classList = 'btn'
+        
+        btn.innerText = element.category;
+        catagoriesContainer.append(btn)
+    });
 }
