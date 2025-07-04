@@ -43,6 +43,23 @@ loadVideos();
 const displayVideos = (videoData) => {
   const videoContainer = document.getElementById("videos");
   videoContainer.innerHTML = "";
+  if(videoData.length == 0){
+
+    videoContainer.classList.remove("grid");
+   
+    videoContainer.innerHTML = `
+    <div class="min-h-[300px] flex flex-col justify-center items-center gap-5 ">
+
+      <img src="assets/icon.png"/> 
+      <h2 class="text-3xl text-gray-400 font-bold">No content available in this category</h2>
+
+    </div>
+    `;
+    return;
+  }
+  else{
+    videoContainer.classList.add("grid")
+  }
   console.log(videoData);
 
   videoData.forEach((data) => {
