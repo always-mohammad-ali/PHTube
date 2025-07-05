@@ -14,7 +14,7 @@ const display = (data) => {
     console.log(element);
     const btnContainer = document.createElement("div")
     btnContainer.innerHTML = `
-        <button onclick = "categoryVideoLoad(${element.category_id})" class="btn">${element.category}</button>
+        <button id="btn-${element.category_id}" onclick = "categoryVideoLoad(${element.category_id})" class="btn btn-style">${element.category}</button>
     `
 
     
@@ -27,8 +27,21 @@ const categoryVideoLoad = (id) =>{
 
     fetch(`https://openapi.programming-hero.com/api/phero-tube/category/${id}`)
     .then((res) => res.json())
-    .then((data) => displayVideos(data.category))
+    .then((data) =>
+      { 
+        removeActiveClass();
+
+        const activeBtn = document.getElementById(`btn-${id}`);
+        activeBtn.classList.add('active')
+        displayVideos(data.category)})
     .catch((err) => console.error(err));
+}
+
+const removeActiveClass =()=>{
+        const btnStyle = document.getElementsByClassName('btn-style');
+        for(let buttonStyle of btnStyle){
+          buttonStyle.classList.remove('active')
+        }
 }
 
 const loadVideos = () => {
