@@ -13,15 +13,23 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
+    <!-- CSS LINK -->
     <link rel="stylesheet" href="style.css" />
+
   </head>
+
+  <!-- START BODY PART -->
   <body>
     <header class="">
+      <!-- START NAV PART -->
       <nav class="w-11/12 p-3 mx-auto flex justify-between my-5 items-center border-b border-gray-300 ">
+
+        <!-- LOGO DIV -->
         <div class="logo w-[120px]">
           <img src="assets/Logo.png" alt="" />
         </div>
-
+         
+        <!-- SEARCH INPUT DIV -->
         <div class="search">
 
           <label class="input">
@@ -44,13 +52,15 @@
             <input type="search" required placeholder="Search" />
           </label>
         </div>
-
+        
+        <!-- BTN DIV -->
         <div class="sort">
           <button class="btn bg-[#FF1F3D] text-white text-lg py-4 px-6">Blog</button>
         </div>
       </nav>
     </header>
 
+    <!-- CATEGORY CONTAINER -->
     <nav id="catagories-container" class="flex justify-center gap-5 p-3">
 
     </nav>
@@ -61,6 +71,24 @@
         </section>
     </main>
 
+    <!-- MODAL -->
+     <!-- Open the modal using ID.showModal() method -->
+<button id="showModalData" class="btn hidden" onclick="customModal.showModal()">open modal</button>
+<dialog id="customModal" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+   <div id="modal-content">
+
+   </div>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+
+    <!-- JS SCRIPT CONNECTION LINK -->
     <script src="js/video.js"></script>
   </body>
 </html>
