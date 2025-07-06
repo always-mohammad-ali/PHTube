@@ -54,8 +54,8 @@ const removeActiveClass =()=>{
 }
 
 // LOADVIDEOS FUNCTION LOADS ALL VIDEOS AND THEN IT SENDS ALL VIDEO DATA TO DISPLAYVIDEOS FUNCTION PARAMETER BY CALLING THIS INSIDE DATA
-const loadVideos = () => {
-  fetch("https://openapi.programming-hero.com/api/phero-tube/videos")
+const loadVideos = (search = "") => {
+  fetch(`https://openapi.programming-hero.com/api/phero-tube/videos?title=${search}`)
     .then((res) => res.json())
     .then((data) => displayVideos(data.videos))
     .catch((err) => console.error(err));
@@ -177,3 +177,7 @@ function calculateTime(time) {
     
   
 }
+
+document.getElementById('search-input').addEventListener("keyup", (e)=>{
+  loadVideos(e.target.value);
+})
